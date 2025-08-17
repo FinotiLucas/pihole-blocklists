@@ -1,0 +1,24 @@
+[package]
+name = "pihole-blocklist"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bytes = "1.10.1"
+futures = "0.3.31"
+futures-util = "0.3.31"
+num_cpus = "1.17.0"
+regex = "1.11.1"
+axum = { version = "0.7", features = ["tokio", "http1"] }
+reqwest = { version = "0.12.23", features = [
+  "json",
+  "stream",
+  "gzip",
+  "blocking",
+  "cookies",
+] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+tokio = { version = "1", features = ["full"] }
+url = "2.5.4"
+hyper = "1.6.0"
