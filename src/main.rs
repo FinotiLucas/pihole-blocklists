@@ -37,7 +37,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
         app.clone().start_updater(60 * 60 * 24);
 
-        app.clone().start_api(3000).await?;
+        app.clone().start_api(1000).await?;
 
         Ok::<(), Box<dyn Error>>(())
     })?;

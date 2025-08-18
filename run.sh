@@ -1,5 +1,5 @@
 #!/bin/bash
-BASE_DIR="/home/orangepi/Github/pihole-blocklists-rs/target"
+BASE_DIR="$(dirname "$0")/target"
 
 BIN=$(find "$BASE_DIR" -type f -path "*/release/*" -executable -maxdepth 4 -printf "%T@ %p\n" 2>/dev/null \
       | sort -n | tail -1 | cut -d' ' -f2-)
