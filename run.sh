@@ -13,5 +13,4 @@ echo "✅ Binário detectado: $BIN"
 
 chmod +x "$BIN"
 
-nohup "$BIN" > "$BASE_DIR/app.log" 2>&1 &
-echo "🚀 Rodando em background (log em $BASE_DIR/app.log)"
+exec "$BIN"
