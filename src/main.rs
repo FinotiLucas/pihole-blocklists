@@ -1,9 +1,8 @@
-// src/main.rs
 mod app;
 mod services;
 mod utils;
 
-use crate::app::BlocklistApp;
+use crate::app::BlockListApp;
 use crate::utils::http_client::HttpClientBuilder;
 use num_cpus;
 use services::blocklist_service::{BlockListService, UrlLists};
@@ -34,7 +33,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         let service = Arc::new(Mutex::new(BlockListService::new(client, 5)));
         let lists = Arc::new(UrlLists::from_json("./data/lists.json")?);
 
-        let app = Arc::new(BlocklistApp::new(service, lists, "./output".into()));
+        let app = Arc::new(BlockListApp::new(service, lists, "./output".into()));
 
         app.clone().start_updater(60 * 60 * 24);
 

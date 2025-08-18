@@ -966,14 +966,12 @@ dependencies = [
  "bytes",
  "futures",
  "futures-util",
- "hyper",
  "num_cpus",
  "regex",
  "reqwest",
  "serde",
  "serde_json",
  "tokio",
- "url",
 ]
 
 [[package]]

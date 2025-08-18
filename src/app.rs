@@ -1,4 +1,3 @@
-// src/app.rs
 use crate::services::blocklist_service::{BlockListService, UrlLists};
 use axum::{
     Router,
@@ -12,13 +11,13 @@ use std::{fs, net::SocketAddr, sync::Arc};
 use tokio::net::TcpListener;
 use tokio::sync::Mutex;
 
-pub struct BlocklistApp {
+pub struct BlockListApp {
     service: Arc<Mutex<BlockListService>>,
     lists: Arc<UrlLists>,
     output_dir: String,
 }
 
-impl BlocklistApp {
+impl BlockListApp {
     pub fn new(
         service: Arc<Mutex<BlockListService>>,
         lists: Arc<UrlLists>,

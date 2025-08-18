@@ -48,7 +48,6 @@ impl BlockListService {
         }
     }
 
-    /// Faz download com retry simplificado
     pub async fn fetch_with_retry(&self, url: &str) -> Result<String, HttpClientError> {
         for attempt in 1..=self.retries {
             match self.http_client.get(url).await {
@@ -73,11 +72,9 @@ impl BlockListService {
         )))
     }
 
-    /// Sanitiza nome de arquivo de acordo com o sistema operacional
     fn sanitize_filename(url: &str) -> String {
         let mut name = url.replace("/", "_").replace("\\", "_");
         if cfg!(windows) {
-            // substitui caracteres inválidos no Windows
             name = name.replace(
                 |c: char| matches!(c, ':' | '*' | '?' | '"' | '<' | '>' | '|'),
                 "_",
@@ -86,7 +83,6 @@ impl BlockListService {
         format!("full_{}", name)
     }
 
-    /// Baixa URLs para arquivos temporários
     async fn download_to_temp(
         &self,
         urls: &[String],
@@ -125,7 +121,6 @@ impl BlockListService {
         Ok(temp_files)
     }
 
-    /// Consolida arquivos temporários, aplica regex, remove duplicatas e grava arquivo final
     fn consolidate_temp_files(
         &self,
         temp_files: Vec<PathBuf>,
@@ -170,7 +165,6 @@ impl BlockListService {
         Ok(())
     }
 
-    /// Processa uma categoria
     pub async fn process_category(
         &self,
         category: &str,
@@ -194,7 +188,6 @@ impl BlockListService {
         Ok(())
     }
 
-    /// Processa todas as categorias
     pub async fn fetch_all_categories(
         &self,
         lists: &UrlLists,
